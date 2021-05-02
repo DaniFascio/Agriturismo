@@ -17,7 +17,16 @@
 	<dependencies>
 
 
-	<!-- postgres -->
+		<!-- spring -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.2.10.RELEASE</version>
+		</dependency>
+
+
+		<!-- postgres -->
 	<dependency>
 		<groupId>org.postgresql</groupId>
 		<artifactId>postgresql</artifactId>
