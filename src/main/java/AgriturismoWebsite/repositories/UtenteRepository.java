@@ -1,5 +1,5 @@
-package repositories;
-import models.Utente;
+package AgriturismoWebsite.repositories;
+import AgriturismoWebsite.models.Utente;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

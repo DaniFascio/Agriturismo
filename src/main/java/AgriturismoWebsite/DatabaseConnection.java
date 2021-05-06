@@ -1,3 +1,5 @@
+package AgriturismoWebsite;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +8,9 @@ public class DatabaseConnection {
 
 	//attributi per la connessione al Database
 
-	private String URL = "jdbc:postgresql://excale.ddns.net:54321/ShoppingDB";
-	private String USER = "danifascio";
-	private String PASSWORD = "fdm3006";
+	private String URL = "jdbc:postgresql://localhost:5432/AgriturismoDB";
+	private String USER = "postgres";
+	private String PASSWORD = "2522";
 
 	private Connection conn;
 

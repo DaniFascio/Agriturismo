@@ -1,20 +1,18 @@
-package controllers;
+package AgriturismoWebsite.controllers;
 
-import com.sun.corba.se.spi.ior.ObjectId;
-import models.Utente;
+import AgriturismoWebsite.models.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import repositories.CameraRepository;
-import repositories.CarrelloRepository;
-import repositories.UtenteRepository;
+import AgriturismoWebsite.repositories.CameraRepository;
+import AgriturismoWebsite.repositories.CarrelloRepository;
+import AgriturismoWebsite.repositories.UtenteRepository;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller

@@ -1,4 +1,4 @@
-package models;
+package AgriturismoWebsite.models;
 
 import javax.persistence.*;
 

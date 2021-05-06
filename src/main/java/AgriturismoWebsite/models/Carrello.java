@@ -1,6 +1,4 @@
-package models;
-
-import repositories.CarrelloRepository;
+package AgriturismoWebsite.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
