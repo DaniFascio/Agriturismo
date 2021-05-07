@@ -1,4 +1,4 @@
-package AgriturismoWebsite;
+package it.faraday.agriturismo;
 
 import java.sql.*;
 import java.util.ArrayList;

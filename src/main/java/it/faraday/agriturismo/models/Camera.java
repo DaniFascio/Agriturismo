@@ -1,4 +1,4 @@
-package AgriturismoWebsite.models;
+package it.faraday.agriturismo.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,7 +21,6 @@ public class Camera {
     private boolean stato;
 
     public Camera(){
-    List<Camera> list = new ArrayList<Camera>();
     }
 
 

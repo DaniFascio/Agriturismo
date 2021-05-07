@@ -1,4 +1,4 @@
-package AgriturismoWebsite.models;
+package it.faraday.agriturismo.models;
 
 import javax.persistence.*;
 
@@ -21,10 +21,10 @@ public class Utente {
     @Basic
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "utenti")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "utenti")
     private Camera camera;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "utenti")
+    @OneToMany(fetch = FetchType.LAZY)
     private Carrello carrello;
 
     public Utente(){

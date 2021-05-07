@@ -1,15 +1,15 @@
-package AgriturismoWebsite.controllers;
+package it.faraday.agriturismo.controllers;
 
-import AgriturismoWebsite.models.Utente;
+import it.faraday.agriturismo.models.Utente;
+import it.faraday.agriturismo.repositories.CameraRepository;
+import it.faraday.agriturismo.repositories.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import AgriturismoWebsite.repositories.CameraRepository;
-import AgriturismoWebsite.repositories.CarrelloRepository;
-import AgriturismoWebsite.repositories.UtenteRepository;
+import it.faraday.agriturismo.repositories.CarrelloRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,17 +40,9 @@ public class UserServlet {
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public ModelAndView registrationpost(@RequestParam String actors, @RequestParam String description,
-                                   @RequestParam int duration, @RequestParam String genre, @RequestParam String languages,
-                                   @RequestParam double price, @RequestParam int publishYear, @RequestParam String subtitles,
-                                   @RequestParam String title){
+    public ModelAndView registrationpost(){
 
         ModelAndView mw = new ModelAndView("insert");
-        List<Utente> lista = Arrays.stream(actors.split(";")).map(Utente::new).collect(Collectors.toList());
-     //   ur.insert(new Utente());
-
-
-
         return new ModelAndView("redirect:/home");
     }
 
@@ -73,17 +65,11 @@ public class UserServlet {
 */
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ModelAndView updatepost(@RequestParam String id, @RequestParam String actors, @RequestParam String description,
-                                   @RequestParam int duration, @RequestParam String genre, @RequestParam String languages,
-                                   @RequestParam double price, @RequestParam int publishYear, @RequestParam String subtitles,
-                                   @RequestParam String title){
+    public ModelAndView updatepost(){
 
         ModelAndView mw;
 
         mw = new ModelAndView("update");
-
-        List<Utente> lista = Arrays.stream(actors.split(";")).map(Utente::new).collect(Collectors.toList());
-       // ur.save(new Utente(new ObjectId(id),lista,description,duration,genre,languages.split(";"),price,publishYear,subtitles.split(";"),title));
 
 
         return new ModelAndView("redirect:/home");

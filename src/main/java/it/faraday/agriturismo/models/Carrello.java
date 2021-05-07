@@ -1,4 +1,4 @@
-package AgriturismoWebsite.models;
+package it.faraday.agriturismo.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;

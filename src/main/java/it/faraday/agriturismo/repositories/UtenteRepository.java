@@ -1,5 +1,5 @@
-package AgriturismoWebsite.repositories;
-import AgriturismoWebsite.models.Utente;
+package it.faraday.agriturismo.repositories;
+import it.faraday.agriturismo.models.Utente;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
