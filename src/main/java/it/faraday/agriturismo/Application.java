@@ -1,6 +1,7 @@
 package it.faraday.agriturismo;
 
 import it.faraday.agriturismo.repositories.CameraRepository;
+import it.faraday.agriturismo.repositories.PersonaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +12,7 @@ import javax.annotation.PostConstruct;
 public class Application {
 
 	@Autowired
-	private CameraRepository camerarepo;
+	private PersonaleRepository personalerepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -19,7 +20,7 @@ public class Application {
 
 	@PostConstruct
 	private void postConstruct() {
-		camerarepo.findAll()
+		personalerepo.findAll()
 				.forEach(System.out::println);
 	}
 

@@ -50,8 +50,7 @@ public class Camera {
 
 	@Override
 	public String toString() {
-		return "Camera{" + "numero=" + numero + ", prezzo=" + prezzo + ", tipoCamera='" + tipoCamera.descrizione +
-				'\'' + '}';
+		return "Camera{" + "numero=" + numero + ", prezzo=" + prezzo + ", tipoCamera='" + tipoCamera.descrizione + '\'' + '}';
 	}
 
 	@Entity
