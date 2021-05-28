@@ -1,19 +1,12 @@
 package it.faraday.agriturismo.controllers;
 
-import it.faraday.agriturismo.models.Utente;
 import it.faraday.agriturismo.repositories.CameraRepository;
 import it.faraday.agriturismo.repositories.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import it.faraday.agriturismo.repositories.CarrelloRepository;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class UserServlet {
@@ -23,11 +16,7 @@ public class UserServlet {
     private UtenteRepository ur;
 
     @Autowired
-    private CarrelloRepository carrep;
-
-    @Autowired
     private CameraRepository camrep;
-
 
     @RequestMapping(value = "/insert", method = RequestMethod.GET)
     public ModelAndView registrationget(){

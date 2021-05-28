@@ -1,6 +1,9 @@
 package it.faraday.agriturismo.models;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "utenti")
@@ -8,9 +11,15 @@ public class Utente {
 
     @Id
     @Column(name = "id_utente")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BS_SEQ_GEN")
-    @SequenceGenerator(name = "BS_SEQ_GEN", sequenceName = "Utente_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ_GEN")
+    @SequenceGenerator(name = "USER_SEQ_GEN", sequenceName = "utenti_id_utente_seq", allocationSize = 1)
     private Integer id;
+
+    @Basic
+    private String nome;
+
+    @Basic
+    private String cognome;
 
     @Basic
     private String username;
@@ -21,69 +30,85 @@ public class Utente {
     @Basic
     private String email;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "utenti")
-    private Camera camera;
+    @Basic
+    @Column(name = "data_nascita")
+    private Date dataNascita;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private Carrello carrello;
 
     public Utente(){
 
     }
-    
 
-    public Utente(Integer id, String username,String password,String email, Integer id_camera,Integer id_carrello){
-
-    }
-
-    public Utente(String s) {
+    public Utente(Integer id, String nome, String cognome, String username, String password, String email, Date dataNascita) {
+        this.id = id;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.dataNascita = dataNascita;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public Utente setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Utente setNome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public Utente setCognome(String cognome) {
+        this.cognome = cognome;
+        return this;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public Utente setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public Utente setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public Utente setEmail(String email) {
         this.email = email;
+        return this;
     }
 
-    public Camera getCamera() {
-        return camera;
+    public Date getDataNascita() {
+        return dataNascita;
     }
 
-    public void setCamera(Camera camera) {
-        this.camera = camera;
-    }
-
-    public Carrello getCarrello() {
-        return carrello;
-    }
-
-    public void setCarrello(Carrello carrello) {
-        this.carrello = carrello;
+    public Utente setDataNascita(Date dataNascita) {
+        this.dataNascita = dataNascita;
+        return this;
     }
 }
