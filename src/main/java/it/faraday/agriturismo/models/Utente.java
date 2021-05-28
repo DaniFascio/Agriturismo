@@ -39,15 +39,6 @@ public class Utente {
 
     }
 
-    public Utente(Integer id, String nome, String cognome, String username, String password, String email, Date dataNascita) {
-        this.id = id;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.dataNascita = dataNascita;
-    }
 
     public Integer getId() {
         return id;
@@ -111,4 +102,10 @@ public class Utente {
         this.dataNascita = dataNascita;
         return this;
     }
+
+	@Override
+	public String toString() {
+		return "Utente{" + "id=" + id + ", nome='" + nome + '\'' + ", cognome='" + cognome + '\'' + ", username='" + username + '\'' + ", password='" + password + '\'' + ", email='" + email + '\'' + ", dataNascita=" + dataNascita + '}';
+	}
+
 }

@@ -103,11 +103,9 @@ public class Personale {
 		return this;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Personale{" + "nome=" + nome + ", cognome=" + cognome + ", tipoPersonale='" + tipoPersonale.descrizione +
-				'\'' + '}';
+		return "Personale{" + "nome=" + nome + ", cognome=" + cognome + ", tipoPersonale='" + tipoPersonale.descrizione + '\'' + '}';
 	}
 
 	@Entity
