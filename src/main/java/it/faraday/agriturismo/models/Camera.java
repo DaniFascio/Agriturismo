@@ -1,6 +1,7 @@
 package it.faraday.agriturismo.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "camere")
@@ -16,6 +17,7 @@ public class Camera {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tipo_camera")
 	private Tipo tipoCamera;
+
 
 	public Camera() {
 	}

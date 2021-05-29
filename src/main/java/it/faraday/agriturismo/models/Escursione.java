@@ -2,6 +2,7 @@ package it.faraday.agriturismo.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "escursioni")
@@ -15,6 +16,15 @@ public class Escursione {
 
 	@Basic
 	private float prezzo;
+
+	@Basic
+	private Date data;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "escursioni_personale",
+			joinColumns = @JoinColumn(name = "id_escursione"),
+			inverseJoinColumns = @JoinColumn(name = "id_personale"))
+	private List<Personale> PersonaleEscursioni;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_meta")
@@ -89,5 +99,7 @@ public class Escursione {
 		}
 
 	}
+
+
 
 }

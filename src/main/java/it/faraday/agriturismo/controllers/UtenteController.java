@@ -8,8 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+
 @Controller
-public class UserServlet {
+public class UtenteController {
+
+	private final DateFormat timestampFormatter;
+	private final DateTimeFormatter dateTimeFormatter;
+
+	public UtenteController() {
+		timestampFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	}
 
 
     @Autowired

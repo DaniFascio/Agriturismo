@@ -2,43 +2,48 @@ package it.faraday.agriturismo.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Ordinazioni")
 public class Ordinazione {
 
-    @Id
-    @Column(name = "id_ordinazione")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORD_SEQ_GEN")
-    @SequenceGenerator(name = "ORD_SEQ_GEN", sequenceName = "ordinazioni_id_ordinazione_seq", allocationSize = 1)
-    private Integer id;
+	@Id
+	@Column(name = "id_ordinazione")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORD_SEQ_GEN")
+	@SequenceGenerator(name = "ORD_SEQ_GEN", sequenceName = "ordinazioni_id_ordinazione_seq", allocationSize = 1)
+	private Integer id;
 
-    @Basic
-    private Date data;
+	@Basic
+	private Date data;
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "carrello_pizze",
+			joinColumns = @JoinColumn(name = "id_ordinazione"),
+			inverseJoinColumns = @JoinColumn(name = "id_pizza"))
+	private List<Pizza> carrelloPizza;
 
-    public Ordinazione() {
+	public Ordinazione() {
 
-    }
+	}
 
+	public Integer getId() {
+		return id;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Ordinazione setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
-    public Ordinazione setId(Integer id) {
-        this.id = id;
-        return this;
-    }
+	public Date getData() {
+		return data;
+	}
 
-    public Date getData() {
-        return data;
-    }
-
-    public Ordinazione setData(Date data) {
-        this.data = data;
-        return this;
-    }
+	public Ordinazione setData(Date data) {
+		this.data = data;
+		return this;
+	}
 
 	@Override
 	public String toString() {

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "utenti")
@@ -34,6 +35,20 @@ public class Utente {
     @Column(name = "data_nascita")
     private Date dataNascita;
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	private List<PrenotazioneSoggiorno> PrenotazioniSoggiorni;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	private List<PrenotazioneAttivitaIppica> PrenotazioniAttivitaIppiche;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	private List<PrenotazioneEscursione> PrenotazioniEscursione;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "utenti_ordinazioni",
+			joinColumns = @JoinColumn(name = "id_utente"),
+			inverseJoinColumns = @JoinColumn(name = "id_ordinazione"))
+	private List<Ordinazione> OrdinazioniUtente;
 
     public Utente(){
 
