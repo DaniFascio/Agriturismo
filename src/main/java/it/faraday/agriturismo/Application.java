@@ -19,6 +19,9 @@ public class Application {
 	@Autowired
 	private UtenteRepository utenterepo;
 
+	@Autowired
+	private OrdinazioneRepository ordinazionerepo;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -27,7 +30,7 @@ public class Application {
 	@PostConstruct
 	private void postConstruct() {
 
-		utenterepo.findAll()
+		ordinazionerepo.findAll()
 				.forEach(System.out::println);
 
 	}

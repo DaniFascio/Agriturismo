@@ -21,10 +21,6 @@ public class Ordinazione {
 
     }
 
-    public Ordinazione(Integer id, Date data) {
-        this.id = id;
-        this.data = data;
-    }
 
     public Integer getId() {
         return id;
@@ -43,4 +39,10 @@ public class Ordinazione {
         this.data = data;
         return this;
     }
+
+	@Override
+	public String toString() {
+		return "Ordinazione{" + "id=" + id + ", data=" + data + '}';
+	}
+
 }

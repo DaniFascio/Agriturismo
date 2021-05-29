@@ -10,6 +10,8 @@ public class Piatto {
 
 	@Id
 	@Column(name = "id_piatto")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIATTO_SEQ_GEN")
+	@SequenceGenerator(name = "PIATTO_SEQ_GEN", sequenceName = "piatti_id_piatto_seq", allocationSize = 1)
 	private Integer id;
 
 	@Basic

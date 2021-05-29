@@ -8,6 +8,8 @@ public class Pizza {
 
 	@Id
 	@Column(name = "id_pizza")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PIZZA_SEQ_GEN")
+	@SequenceGenerator(name = "PIZZA_SEQ_GEN", sequenceName = "pizze_id_pizza_seq", allocationSize = 1)
 	private Integer id;
 
 	@Basic
