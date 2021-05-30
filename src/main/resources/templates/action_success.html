@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title th:text="${title}">Action Success</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+				integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+				crossorigin="anonymous">
+	</head>
+	<body>
+
+		<div class="mx-auto my-4 text-center">
+			<div class="d-flex-column justify-content-center">
+				<h1 class="display-4 mx-auto" th:text="${message}">Azione effettuata</h1>
+				<a th:href="${nextUrl}" href="#">Clicca qui per proseguire</a>
+			</div>
+		</div>
+
+	</body>
+</html>

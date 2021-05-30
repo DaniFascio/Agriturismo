@@ -1,5 +1,7 @@
 package it.faraday.agriturismo.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +36,7 @@ public class Utente {
 
 	@Basic
 	@Column(name = "data_nascita")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataNascita;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
@@ -109,7 +112,53 @@ public class Utente {
 		return this;
 	}
 
+	public String getSesso() {
+		return sesso;
+	}
 
+	public void setSesso(String sesso) {
+		this.sesso = sesso;
+	}
+
+	public List<PrenotazioneSoggiorno> getPrenotazioniSoggiorni() {
+		return PrenotazioniSoggiorni;
+	}
+
+	public void setPrenotazioniSoggiorni(List<PrenotazioneSoggiorno> prenotazioniSoggiorni) {
+		PrenotazioniSoggiorni = prenotazioniSoggiorni;
+	}
+
+	public List<PrenotazioneAttivitaIppica> getPrenotazioniAttivitaIppiche() {
+		return PrenotazioniAttivitaIppiche;
+	}
+
+	public void setPrenotazioniAttivitaIppiche(List<PrenotazioneAttivitaIppica> prenotazioniAttivitaIppiche) {
+		PrenotazioniAttivitaIppiche = prenotazioniAttivitaIppiche;
+	}
+
+	public List<PrenotazioneEscursione> getPrenotazioniEscursione() {
+		return PrenotazioniEscursione;
+	}
+
+	public void setPrenotazioniEscursione(List<PrenotazioneEscursione> prenotazioniEscursione) {
+		PrenotazioniEscursione = prenotazioniEscursione;
+	}
+
+	public List<OrdinazionePiatto> getOrdinaPiatto() {
+		return OrdinaPiatto;
+	}
+
+	public void setOrdinaPiatto(List<OrdinazionePiatto> ordinaPiatto) {
+		OrdinaPiatto = ordinaPiatto;
+	}
+
+	public List<OrdinazionePizza> getOrdinaPizza() {
+		return OrdinaPizza;
+	}
+
+	public void setOrdinaPizza(List<OrdinazionePizza> ordinaPizza) {
+		OrdinaPizza = ordinaPizza;
+	}
 
 	public Date getDataNascita() {
 		return dataNascita;
@@ -123,8 +172,8 @@ public class Utente {
 	@Override
 	public String toString() {
 		return "Utente{" + "id=" + id + ", nome='" + nome + '\'' + ", cognome='" + cognome + '\'' + ", username='" +
-				username + '\'' + ", password='" + password + '\'' + ", email='" + email + '\'' + ", dataNascita=" +
-				dataNascita + '}';
+				username + '\'' + ", password='" + password + '\'' + ", email='" + email + '\'' + ", sesso='" + sesso +
+				'\'' + ", dataNascita=" + dataNascita + '}';
 	}
 
 }
