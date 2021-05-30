@@ -1,7 +1,5 @@
 package it.faraday.agriturismo.models;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -10,30 +8,30 @@ import java.util.List;
 @Table(name = "utenti")
 public class Utente {
 
-    @Id
-    @Column(name = "id_utente")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ_GEN")
-    @SequenceGenerator(name = "USER_SEQ_GEN", sequenceName = "utenti_id_utente_seq", allocationSize = 1)
-    private Integer id;
+	@Id
+	@Column(name = "id_utente")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ_GEN")
+	@SequenceGenerator(name = "USER_SEQ_GEN", sequenceName = "utenti_id_utente_seq", allocationSize = 1)
+	private Integer id;
 
-    @Basic
-    private String nome;
+	@Basic
+	private String nome;
 
-    @Basic
-    private String cognome;
+	@Basic
+	private String cognome;
 
-    @Basic
-    private String username;
+	@Basic
+	private String username;
 
-    @Basic
-    private String password;
+	@Basic
+	private String password;
 
-    @Basic
-    private String email;
+	@Basic
+	private String email;
 
-    @Basic
-    @Column(name = "data_nascita")
-    private Date dataNascita;
+	@Basic
+	@Column(name = "data_nascita")
+	private Date dataNascita;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
 	private List<PrenotazioneSoggiorno> PrenotazioniSoggiorni;
@@ -44,83 +42,84 @@ public class Utente {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
 	private List<PrenotazioneEscursione> PrenotazioniEscursione;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "utenti_ordinazioni",
-			joinColumns = @JoinColumn(name = "id_utente"),
-			inverseJoinColumns = @JoinColumn(name = "id_ordinazione"))
-	private List<Ordinazione> OrdinazioniUtente;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	private List<OrdinazionePiatto> OrdinaPiatto;
 
-    public Utente(){
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	private List<OrdinazionePizza> OrdinaPizza;
 
-    }
+	public Utente() {
 
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Utente setId(Integer id) {
-        this.id = id;
-        return this;
-    }
+	public Utente setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public Utente setNome(String nome) {
-        this.nome = nome;
-        return this;
-    }
+	public Utente setNome(String nome) {
+		this.nome = nome;
+		return this;
+	}
 
-    public String getCognome() {
-        return cognome;
-    }
+	public String getCognome() {
+		return cognome;
+	}
 
-    public Utente setCognome(String cognome) {
-        this.cognome = cognome;
-        return this;
-    }
+	public Utente setCognome(String cognome) {
+		this.cognome = cognome;
+		return this;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public Utente setUsername(String username) {
-        this.username = username;
-        return this;
-    }
+	public Utente setUsername(String username) {
+		this.username = username;
+		return this;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public Utente setPassword(String password) {
-        this.password = password;
-        return this;
-    }
+	public Utente setPassword(String password) {
+		this.password = password;
+		return this;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public Utente setEmail(String email) {
-        this.email = email;
-        return this;
-    }
+	public Utente setEmail(String email) {
+		this.email = email;
+		return this;
+	}
 
-    public Date getDataNascita() {
-        return dataNascita;
-    }
+	public Date getDataNascita() {
+		return dataNascita;
+	}
 
-    public Utente setDataNascita(Date dataNascita) {
-        this.dataNascita = dataNascita;
-        return this;
-    }
+	public Utente setDataNascita(Date dataNascita) {
+		this.dataNascita = dataNascita;
+		return this;
+	}
 
 	@Override
 	public String toString() {
-		return "Utente{" + "id=" + id + ", nome='" + nome + '\'' + ", cognome='" + cognome + '\'' + ", username='" + username + '\'' + ", password='" + password + '\'' + ", email='" + email + '\'' + ", dataNascita=" + dataNascita + '}';
+		return "Utente{" + "id=" + id + ", nome='" + nome + '\'' + ", cognome='" + cognome + '\'' + ", username='" +
+				username + '\'' + ", password='" + password + '\'' + ", email='" + email + '\'' + ", dataNascita=" +
+				dataNascita + '}';
 	}
 
 }

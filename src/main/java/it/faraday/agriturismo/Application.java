@@ -11,8 +11,12 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class Application {
 
+
 	@Autowired
-	private AttivitaIppicaRepository attivitarepo;
+	private OrdinazionePiattoRepository ordinazionepiattorepo;
+
+	@Autowired
+	private OrdinazionePizzaRepository ordinazionepizzarepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -21,7 +25,10 @@ public class Application {
 	@PostConstruct
 	private void postConstruct() {
 
-		attivitarepo.findAll()
+		ordinazionepiattorepo.findAll()
+				.forEach(System.out::println);
+
+		ordinazionepizzarepo.findAll()
 				.forEach(System.out::println);
 
 	}

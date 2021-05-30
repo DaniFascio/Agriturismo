@@ -10,7 +10,9 @@ public class PrenotazioneAttivitaIppica {
 	@Id
 	@Column(name = "id_prenotazioneai")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRENAI_SEQ_GEN")
-	@SequenceGenerator(name = "PRENAI_SEQ_GEN", sequenceName = "prenotazioni_attivitaippiche_id_prenotazioneai_seq", allocationSize = 1)
+	@SequenceGenerator(name = "PRENAI_SEQ_GEN",
+			sequenceName = "prenotazioni_attivitaippiche_id_prenotazioneai_seq",
+			allocationSize = 1)
 	private Integer id;
 
 	@Basic
