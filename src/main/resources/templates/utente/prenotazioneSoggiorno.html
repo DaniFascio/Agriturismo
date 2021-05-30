@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Prenotazione Soggiorno</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+				integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+				crossorigin="anonymous">
+
+	</head>
+	<body>
+		<div class="container-fluid text-center">
+
+			<h1 class="display-5 mx-auto m-4">Prenota camera</h1>
+
+			<div class="container border border-primary rounded p-3">
+				<div class="d-flex flex-column g-2 align-items-center">
+
+
+					<body>
+
+						<h1>Elenco escursioni libere</h1>
+
+						<form action="registrati/submit" method="POST" th:object="Camera">
+
+
+							<table>
+								<tr>
+									<th>Numero</th>
+									<th>Tipo</th>
+									<th>Prezzo a notte (€)</th>
+									<th>Azioni</th>
+								</tr>
+
+								<tr th:each>
+									<td th:text="*{numero}"></td>
+									<td th:text="*{prezzo}"></td>
+									<td th:text="*{tipoCamera}"></td>
+
+									<td><a
+											th:href="'/view/?id='+*{numero}">
+										<button>View</button>
+									</a>
+
+
+								</tr>
+
+							</table>
+
+
+						</form>
+
+
+					</body>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+</html>

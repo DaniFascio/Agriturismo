@@ -34,41 +34,45 @@ public class PrenotazioneSoggiorno {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public PrenotazioneSoggiorno setId(Integer id) {
 		this.id = id;
+		return this;
 	}
-
 
 	public Date getDataCheckin() {
 		return dataCheckin;
 	}
 
-	public void setDataCheckin(Date dataCheckin) {
+	public PrenotazioneSoggiorno setDataCheckin(Date dataCheckin) {
 		this.dataCheckin = dataCheckin;
+		return this;
 	}
 
 	public Date getDataCheckout() {
 		return dataCheckout;
 	}
 
-	public void setDataCheckout(Date dataCheckout) {
+	public PrenotazioneSoggiorno setDataCheckout(Date dataCheckout) {
 		this.dataCheckout = dataCheckout;
+		return this;
 	}
 
 	public Utente getUtente() {
 		return utente;
 	}
 
-	public void setUtente(Utente utente) {
+	public PrenotazioneSoggiorno setUtente(Utente utente) {
 		this.utente = utente;
+		return this;
 	}
 
 	public Camera getCamera() {
 		return camera;
 	}
 
-	public void setCamera(Camera camera) {
+	public PrenotazioneSoggiorno setCamera(Camera camera) {
 		this.camera = camera;
+		return this;
 	}
 
 	@Override

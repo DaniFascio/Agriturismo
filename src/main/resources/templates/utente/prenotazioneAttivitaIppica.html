@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Prenotazione Attività Ippica</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+				integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+				crossorigin="anonymous">
+
+	</head>
+	<body>
+		<div class="container-fluid text-center">
+
+			<h1 class="display-5 mx-auto m-4">Prenota attività ippica</h1>
+
+			<div class="container border border-primary rounded p-3">
+				<div class="d-flex flex-column g-2 align-items-center">
+
+
+					<body>
+
+						<h1>Elenco attività ippiche libere</h1>
+
+						<form action="registrati/submit" method="POST">
+
+
+							<table>
+								<tr>
+									<th>Nome:</th>
+
+									<td>
+										<input type="text" id="oraInizio" placeholder="oraInizio" name="oraInizio"/>
+									</td>
+									<td>
+										<input type="text" id="oraFine" placeholder="oraFine" name="oraFine"/>
+									</td>
+									<td>
+										<input type="text" id="prezzo" placeholder="prezzo" name="prezzo"/>
+									</td>
+									<td>
+										<input type="text" id="aggiungi" placeholder="aggiungi" name="aggiungi"/>
+									</td>
+
+
+								</tr>
+
+							</table>
+
+
+						</form>
+
+
+					</body>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+</html>
