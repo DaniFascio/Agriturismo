@@ -1,9 +1,11 @@
 package it.faraday.agriturismo.controllers;
 
-import it.faraday.agriturismo.repositories.CameraRepository;
-import it.faraday.agriturismo.repositories.UtenteRepository;
+import it.faraday.agriturismo.models.Utente;
+import it.faraday.agriturismo.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,7 +15,21 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
 @Controller
+@RequestMapping("/utente")
 public class UtenteController {
+
+	@Autowired
+	private UtenteRepository utenterepo;
+
+	@Autowired
+	private PrenotazioneAttivitaIppicaRrepository prenoattivitarepo;
+	@Autowired
+	private PrenotazioneEscursioneRepository prenoescursionerepo;
+	@Autowired
+	private PrenotazioneSoggiornoRepository prenosoggiornorepo;
+
+	@Autowired
+	private CameraRepository camrepo;
 
 	private final DateFormat timestampFormatter;
 	private final DateTimeFormatter dateTimeFormatter;
@@ -23,29 +39,38 @@ public class UtenteController {
 		dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	}
 
+	@RequestMapping("/accedi")
+	private ModelAndView accedi_view(){
 
-    @Autowired
-    private UtenteRepository ur;
+		ModelAndView mav = new ModelAndView("utente/accesso");
 
-    @Autowired
-    private CameraRepository camrep;
+		return mav;
 
-    @RequestMapping(value = "/insert", method = RequestMethod.GET)
-    public ModelAndView registrationget(){
+	}
 
-        ModelAndView mw = new ModelAndView("insert");
-        mw.addObject("");
+	@GetMapping("/registrati")
+	private ModelAndView registrati_view() {
 
-        return mw;
+		ModelAndView mav = new ModelAndView("utente/registrazione");
 
-    }
+		return mav;
+	}
 
-    @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public ModelAndView registrationpost(){
+	@PostMapping("/registrati/submit")
+	private String registrati_submit(Utente utente) {
 
-        ModelAndView mw = new ModelAndView("insert");
-        return new ModelAndView("redirect:/home");
-    }
+		utenterepo.save(utente);
+
+		return "redirect:/paziente/accedi?message=" + "Utente registrato con successo";
+	}
+
+
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public ModelAndView registrationpost() {
+
+		ModelAndView mw = new ModelAndView("insert");
+		return new ModelAndView("redirect:/home");
+	}
 
 /*
     @RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -65,16 +90,16 @@ public class UtenteController {
     }
 */
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ModelAndView updatepost(){
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ModelAndView updatepost() {
 
-        ModelAndView mw;
+		ModelAndView mw;
 
-        mw = new ModelAndView("update");
+		mw = new ModelAndView("update");
 
 
-        return new ModelAndView("redirect:/home");
-    }
+		return new ModelAndView("redirect:/home");
+	}
 
 
  /*
@@ -96,13 +121,12 @@ public class UtenteController {
     }
 */
 
-    @RequestMapping("/home")
-    public ModelAndView home(){
+	@RequestMapping("/home")
+	public ModelAndView home() {
 
-        ModelAndView mw = new ModelAndView("home");
+		ModelAndView mw = new ModelAndView("home");
 
-        return mw;
-    }
-
+		return mw;
+	}
 
 }

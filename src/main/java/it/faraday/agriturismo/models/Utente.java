@@ -30,6 +30,9 @@ public class Utente {
 	private String email;
 
 	@Basic
+	private String sesso;
+
+	@Basic
 	@Column(name = "data_nascita")
 	private Date dataNascita;
 
@@ -105,6 +108,8 @@ public class Utente {
 		this.email = email;
 		return this;
 	}
+
+
 
 	public Date getDataNascita() {
 		return dataNascita;

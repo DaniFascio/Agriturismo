@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>areaClienti</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+				integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+				crossorigin="anonymous">
+
+	</head>
+	<body>
+		<div class="container-fluid text-center">
+
+			<h1 class="display-5 mx-auto m-4">Registrazione cliente</h1>
+
+			<div class="container border border-primary rounded p-3">
+				<div class="d-flex flex-column g-2 align-items-center">
+
+
+					<body>
+
+						<h1>Inserire un nuovo cliente</h1>
+
+						<form action="registrati/submit" method="POST">
+
+
+							<table>
+								<tr>
+									<th>Nome:</th>
+									<td>
+										<input type="text" id="nome" placeholder="nome" name="nome"/>
+									</td>
+
+								</tr>
+
+								<tr>
+									<th>Cognome:</th>
+									<td>
+										<input type="text" id="cognome" placeholder="cognome" name="cognome"/>
+									</td>
+
+								</tr>
+
+								<tr>
+									<th>Username:</th>
+									<td>
+										<input type="text" id="username" placeholder="username" name="username"/>
+									</td>
+
+								</tr>
+								<tr>
+									<th>Password:</th>
+									<td>
+										<input type="password" id="password" placeholder="password" name="password"/>
+									</td>
+
+								</tr>
+								<tr>
+									<th>email:</th>
+									<td>
+										<input type="text" id="email" placeholder="email" name="email"/>
+									</td>
+
+								</tr>
+								<tr>
+									<th>Sesso:</th>
+									<td>
+										<select name="sesso" id="sesso">
+											<option value="maschio">maschio</option>
+											<option value="femmina">femmina</option>
+											<option value="altro">altro</option>
+											<option value="preferisco non specificare">preferisco non specificare
+											</option>
+										</select>
+								</tr>
+								<tr>
+									<th>Data nascita:</th>
+									<td>
+										<input type="date" name="dataNascita" id="dataNascita">
+									</td>
+								</tr>
+
+							</table>
+
+							<div class="d-flex justify-content-start">
+								<input class="btn btn-primary m-1"
+										type="submit" value="Registrati"/>
+							</div>
+
+						</form>
+
+
+					</body>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+</html>
