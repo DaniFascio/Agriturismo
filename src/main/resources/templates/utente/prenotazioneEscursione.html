@@ -18,41 +18,34 @@
 				<div class="d-flex flex-column g-2 align-items-center">
 
 
-					<body>
-
-						<h1>Elenco escursioni libere</h1>
-
-						<form action="registrati/submit" method="POST">
+					<h1>Elenco escursioni</h1>
 
 
-							<table>
-								<tr>
-									<th>Nome:</th>
+					<table border="1">
+						<tr>
+							<th>Data</th>
+							<th>Meta</th>
+							<th>Prezzo</th>
+							<th>Azioni</th>
+						</tr>
 
-									<td>
-										<input type="text" id="data" placeholder="data" name="data"/>
-									</td>
-									<td>
-										<input type="text" id="prezzo" placeholder="prezzo" name="prezzo"/>
-									</td>
-									<td>
-										<input type="text" id="meta" placeholder="meta" name="meta"/>
-									</td>
+						<form action="/utente/prenotazioneEscursione/submit" method="POST">
 
-									<td>
-										<input type="text" id="aggiungi" placeholder="aggiungi" name="aggiungi"/>
-									</td>
+							<tr th:each="escursione : ${escursioni}" th:object="${escursione}">
+								<td th:text="*{#dates.format(data,'dd-MM-yyyy HH:mm')}"></td>
+								<td th:text="*{meta.nome}"></td>
+								<td th:text="*{prezzo}"></td>
 
+								<td>
+									<input type="submit" value="prenota">
+								</td>
+								<input type="number" th:value="*{id}" name="id" hidden>
 
-								</tr>
-
-							</table>
-
+							</tr>
 
 						</form>
 
-
-					</body>
+					</table>
 
 
 				</div>

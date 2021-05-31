@@ -14,20 +14,32 @@
 
 			<h1 class="display-5 mx-auto m-4">Area cliente</h1>
 
-			<div class="container border border-primary rounded p-3">
-				<div class="d-flex flex-column g-2">
-					<div class="row">
+			<div th:if="${alert != null}" th:utext="${alert.getRawHtml()}" th:remove="tag"></div>
 
-					<a class=" btn btn-primary m-1" href="/utente/ordinazionePizzeria">Ordinazione pizzeria</a>
-					<a class=" btn btn-primary m-1" href="/utente/ordinazioneRistorante">Ordinazione ristorante</a>
+
+			<div class="container border border-primary rounded p-3">
+				<div class="g-2">
+					<div>
+						<div>
+
+
+							<a class=" btn btn-primary m-1" href="/utente/ordinazionePizzeria">Ordinazione pizzeria</a>
+							<a class=" btn btn-primary m-1" href="/utente/ordinazioneRistorante">Ordinazione
+								ristorante
+							</a>
+
+						</div>
+
+						<a class=" btn btn-primary m-1" href="/utente/prenotazioneSoggiorno">Prenotazione Soggiorno</a>
+						<a class=" btn btn-primary m-1" href="/utente/prenotazioneAttivitaIppica">Prenotazione Attività
+							Ippica
+						</a>
+						<a class=" btn btn-primary m-1" href="/utente/prenotazioneEscursione">Prenotazione Escursione
+						</a>
 
 					</div>
 
-					<a class=" btn btn-primary m-1" href="/utente/ordinazioneRistorante">Prenotazione Soggiorno</a>
-					<a class=" btn btn-primary m-1" href="/utente/ordinazioneRistorante">Prenotazione Attività Ippica</a>
-					<a class=" btn btn-primary m-1" href="/utente/ordinazioneRistorante">Prenotazione Escursione</a>
 					<a class=" btn btn-primary m-1" href="/utente/logout">Logout</a>
-
 
 				</div>
 
@@ -38,4 +50,10 @@
 		</div>
 
 	</body>
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+			integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+			crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+			crossorigin="anonymous"></script>
 </html>

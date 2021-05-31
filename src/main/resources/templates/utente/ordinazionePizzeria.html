@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>menuPizzeria</title>
+		<title>Ordinazione Pizzeria</title>
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 				integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -12,16 +12,50 @@
 	<body>
 		<div class="container-fluid text-center">
 
-			<h1 class="display-4 mx-auto m-4">Menu pizzeria</h1>
+			<h1 class="display-5 mx-auto m-4">Ordina pizze</h1>
 
 			<div class="container border border-primary rounded p-3">
-				<form method="post">
-					<div class="d-flex flex-column g-2">
+				<div class="d-flex flex-column g-2 align-items-center">
 
 
+					<body>
 
-					</div>
-				</form>
+						<h1>Elenco attività ippiche</h1>
+
+						<form action="/utente/prenotazioneAttivitaIppica/submit" method="POST">
+
+
+							<table>
+								<tr>
+									<th>Orario inizio</th>
+									<th>Orario fine</th>
+									<th>Prezzo</th>
+									<th>Azioni</th>
+								</tr>
+
+								<tr th:each="attivita : ${attivitaippiche}" th:object="${attivita}">
+									<td th:text="*{dataCheckin}"></td>
+									<td th:text="*{dataCheckout}"></td>
+									<td th:text="*{prezzo}"></td>
+
+									<td><a
+											th:href="'/view/?id='+*{id}">
+										<button>Prenota</button>
+									</a>
+
+
+								</tr>
+
+							</table>
+
+
+						</form>
+
+
+					</body>
+
+
+				</div>
 			</div>
 
 		</div>

@@ -36,11 +36,23 @@ public class UtenteController {
 	@Autowired
 	private PrenotazioneSoggiornoRepository prenosoggiornorepo;
 	@Autowired
+	private OrdinazionePiattoRepository ordinazionepiattorepo;
+	@Autowired
+	private OrdinazionePizzaRepository ordinazionepizzarepo;
+	@Autowired
+	private MetaRepository metarepo;
+	@Autowired
+	private TipoCameraRepository tipocamerarepo;
+	@Autowired
 	private CameraRepository camerarepo;
 	@Autowired
 	private AttivitaIppicaRepository attivitarepo;
 	@Autowired
 	private EscursioneRepository escursionerepo;
+	@Autowired
+	private PizzaRepository pizzarepo;
+	@Autowired
+	private PiattoRepository piattorepo;
 
 	private final DateFormat timestampFormatter;
 	private final DateTimeFormatter dateTimeFormatter;
@@ -52,7 +64,7 @@ public class UtenteController {
 
 	@RequestMapping("/accedi")
 	private ModelAndView accedi_view(Alert alert, Model model,
-			@CookieValue(name = COOKIE_UTENTE, required = false) String usernameUtente){
+			@CookieValue(name = COOKIE_UTENTE, required = false) String usernameUtente) {
 
 		ModelAndView mav = new ModelAndView("utente/accesso");
 
@@ -122,7 +134,6 @@ public class UtenteController {
 		return "redirect:/utente/accedi?message=" + encode("Utente registrato con successo");
 	}
 
-
 	@GetMapping("/areaCliente")
 	private String areaCliente(Model model, Alert alert,
 			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
@@ -146,22 +157,7 @@ public class UtenteController {
 	}
 
 	@GetMapping("/prenotazioneSoggiorno")
-	private String prenotaSoggiorno_view(Model model, @CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
-
-		if(usernameUtente == null)
-			return "redirect:/utente/accedi";
-
-		Utente utente = utenterepo.findByUsername(usernameUtente)
-				.get();
-
-		model.addAttribute("utente", utente);
-		model.addAttribute("camera", camerarepo.findAll());
-
-		return "utente/prenotazioneSoggiorno";
-	}
-
-	@PostMapping("/prenotazioneSoggiorno/submit")
-	private String prenotaSoggiorno_submit(Camera camera,
+	private String prenotaSoggiorno_view(Model model,
 			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
 		if(usernameUtente == null)
@@ -169,24 +165,45 @@ public class UtenteController {
 
 		Utente utente = utenterepo.findByUsername(usernameUtente)
 				.get();
-		Camera cameradb= camerarepo.findById(camera.getNumero())
+
+		model.addAttribute("utente", utente);
+		model.addAttribute("camere", camerarepo.findAll());
+		model.addAttribute("tipi", tipocamerarepo.findAll());
+
+		return "utente/prenotazioneSoggiorno";
+	}
+
+	@PostMapping("/prenotazioneSoggiorno/submit")
+	private String prenotaSoggiorno_submit(Camera camera, Date dataCheckin, Date dataCheckout,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+		Camera cameradb = camerarepo.findById(camera.getNumero())
 				.get();
 
-		Date dataCheckin;
+		Date datacheckin = dataCheckin;
 
-		Date dataCheckout;
+		Date datacheckout = dataCheckout;
+
 
 		PrenotazioneSoggiorno prenotazione = new PrenotazioneSoggiorno().setUtente(utente)
-				.setDataCheckin(dataCheckin)
-				.setDataCheckout(dataCheckout)
-				.setCamera(camera);
+				.setCamera(camera)
+				.setDataCheckin(datacheckin)
+				.setDataCheckout(datacheckout);
+
 		prenosoggiornorepo.save(prenotazione);
+
 
 		return "redirect:/utente/areaCliente?message=" + encode("Prenotazione effettuata") + "&type=success";
 	}
 
 	@GetMapping("/prenotazioneAttivitaIppica")
-	private String prenotaAttivitaIppica_view(Model model, @CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+	private String prenotaAttivitaIppica_view(Model model,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
 		if(usernameUtente == null)
 			return "redirect:/utente/accedi";
@@ -195,8 +212,7 @@ public class UtenteController {
 				.get();
 
 		model.addAttribute("utente", utente);
-		model.addAttribute("attivitaippiche", utenterepo.findAll());
-
+		model.addAttribute("attivitaippica", attivitarepo.findAll());
 
 		return "utente/prenotazioneAttivitaIppica";
 	}
@@ -210,32 +226,23 @@ public class UtenteController {
 
 		Utente utente = utenterepo.findByUsername(usernameUtente)
 				.get();
-		AttivitaIppica attivitaIppicadb= attivitarepo.findById(attivitaIppica.getId())
+		AttivitaIppica attivitaIppicadb = attivitarepo.findById(attivitaIppica.getId())
 				.get();
 
-		Date dataCheckin;
-
-		Date dataCheckout;
-
-		try {
-			dataCheckin = TIMESTAMP_FORMATTER.parse(data + " " + ora);
-			dataCheckout = TIMESTAMP_FORMATTER.parse(data + " " + ora);
-		} catch(ParseException e) {
-			//noinspection SpringMVCViewInspection
-			return "redirect:/utente/prenotaSoggiorno?message=" + encode("Formato data errato") + "&type=danger";
-		}
+		Date data = new Date();
 
 		PrenotazioneAttivitaIppica prenotazione = new PrenotazioneAttivitaIppica().setUtente(utente)
-				.setDataCheckin(dataCheckin)
-				.setDataCheckout(dataCheckout)
-				.setCamera();
+				.setAttivitaIppica(attivitaIppica)
+				.setData(data);
+
 		prenoattivitarepo.save(prenotazione);
 
 		return "redirect:/utente/areaCliente?message=" + encode("Prenotazione effettuata") + "&type=success";
 	}
 
 	@GetMapping("/prenotazioneEscursione")
-	private String prenotaEscursione_view(Model model, @CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+	private String prenotaEscursione_view(Model model,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
 		if(usernameUtente == null)
 			return "redirect:/utente/accedi";
@@ -244,7 +251,8 @@ public class UtenteController {
 				.get();
 
 		model.addAttribute("utente", utente);
-		model.addAttribute("esursioni", utenterepo.findAll());
+		model.addAttribute("escursioni", escursionerepo.findAll());
+		model.addAttribute("mete", metarepo.findAll());
 
 		return "utente/prenotazioneEscursione";
 	}
@@ -261,15 +269,125 @@ public class UtenteController {
 		Escursione escursioneDb = escursionerepo.findById(escursione.getId())
 				.get();
 
-		Date data;
+		Date data = new Date();
 
 		PrenotazioneEscursione prenotazione = new PrenotazioneEscursione().setUtente(utente)
-				.setDataCheckin(dataCheckin)
-				.setDataCheckout(dataCheckout)
-				.setEscursione(escursione);
+				.setEscursione(escursione)
+				.setData(data);
+
 		prenoescursionerepo.save(prenotazione);
 
 		return "redirect:/utente/areaCliente?message=" + encode("Prenotazione effettuata") + "&type=success";
+	}
+
+	@GetMapping("/ordinazioneRistorante")
+	private String ordinaRistorante_view(Model model,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		model.addAttribute("utente", utente);
+		model.addAttribute("camera", camerarepo.findAll());
+
+		return "utente/ordinazioneRistorante";
+	}
+
+	@PostMapping("/ordinazioneRistorante/submit")
+	private String ordinaRistorante_submit(Piatto piatto,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+		Piatto piattoDb = piattorepo.findById(piatto.getId())
+				.get();
+
+		Date data;
+/*
+		OrdinazionePiatto ordinazionePiatto = new OrdinazionePiatto().setUtente(utente)
+				.setPiatto(piatto)
+				.setData(data);
+
+		ordinazionepiattorepo.save(ordinazionePiatto);
+*/
+		return "redirect:/utente/areaCliente?message=" + encode("Ordinazione effettuata") + "&type=success";
+	}
+
+	@GetMapping("/ordinazionePizzeria")
+	private String ordinaPizzeria_view(Model model,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		model.addAttribute("utente", utente);
+		model.addAttribute("camera", camerarepo.findAll());
+
+		return "utente/ordinazionePizzeria";
+	}
+
+	@PostMapping("/ordinazionePizzeria/submit")
+	private String ordinaPizzeria_submit(Pizza pizza,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+		Pizza pizzaDb = pizzarepo.findById(pizza.getId())
+				.get();
+
+		Date data;
+/*
+		OrdinazionePizza ordinazionePizza = new OrdinazionePizza().setUtente(utente)
+				.setPizza(pizza)
+				.setData(data);
+
+		ordinazionepizzarepo.save(ordinazionePizza);
+*/
+		return "redirect:/utente/areaCliente?message=" + encode("Ordinazione effettuata") + "&type=success";
+	}
+
+	@GetMapping("/visualizzaPrenotazioniPiatti")
+	private String viewPrenotazioniPiatti(Model model,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		model.addAttribute("utente", utente);
+		model.addAttribute("piatto", piattorepo.findAll());
+
+		return "utente/visualizzaPrenotazioniPiatti";
+	}
+
+	@GetMapping("/visualizzaPrenotazioniPizze")
+	private String viewPrenotazioniPizze(Model model,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		model.addAttribute("utente", utente);
+		model.addAttribute("pizza", pizzarepo.findAll());
+
+		return "utente/visualizzaPrenotazioniPiatti";
 	}
 
 	@GetMapping("/logout")
@@ -294,41 +412,5 @@ public class UtenteController {
 
 		return mw;
 	}
-
-	/*
-		@RequestMapping(value = "/update", method = RequestMethod.GET)
-		public ModelAndView updateget(@RequestParam String id){
-
-
-			ModelAndView mw;
-			Optional<Movie> mo = mr.findById(new ObjectId(id));
-			if(mo.isPresent()){
-				mw = new ModelAndView("update");
-				mw.addObject("movie",mo.get());
-			}
-			else
-				mw = new ModelAndView("error404");
-
-			return mw;
-		}
-
-		@RequestMapping("/delete")
-		public ModelAndView delete(@RequestParam String id) {
-
-
-		   ModelAndView mw;
-			Optional<Utente> mo = ur.findById(new ObjectId(id));
-			if(mo.isPresent()) {
-				mw = new ModelAndView("home");
-				mw.addObject("movies", ur.findAll());
-				ur.delete(mo.get());
-			}
-			else
-				new ModelAndView("error404");
-
-			return new ModelAndView("confirmdel");
-		}
-	*/
-
 
 }

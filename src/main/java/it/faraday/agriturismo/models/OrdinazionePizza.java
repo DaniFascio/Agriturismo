@@ -33,32 +33,36 @@ public class OrdinazionePizza {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public OrdinazionePizza setId(Integer id) {
 		this.id = id;
+		return this;
 	}
 
 	public Date getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public OrdinazionePizza setData(Date data) {
 		this.data = data;
+		return this;
 	}
 
 	public Utente getUtente() {
 		return utente;
 	}
 
-	public void setUtente(Utente utente) {
+	public OrdinazionePizza setUtente(Utente utente) {
 		this.utente = utente;
+		return this;
 	}
 
 	public Pizza getPizza() {
 		return pizza;
 	}
 
-	public void setPizza(Pizza pizza) {
+	public OrdinazionePizza setPizza(Pizza pizza) {
 		this.pizza = pizza;
+		return this;
 	}
 
 	@Override

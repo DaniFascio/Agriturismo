@@ -18,41 +18,45 @@
 				<div class="d-flex flex-column g-2 align-items-center">
 
 
-					<body>
+					<h1>Elenco camere libere</h1>
 
-						<h1>Elenco escursioni libere</h1>
-
-						<form action="registrati/submit" method="POST" th:object="Camera">
+					<form action="/utente/prenotazioneSoggiorno/submit" method="POST">
 
 
-							<table>
-								<tr>
-									<th>Numero</th>
-									<th>Tipo</th>
-									<th>Prezzo a notte (€)</th>
-									<th>Azioni</th>
-								</tr>
+						<table border="1">
+							<tr>
+								<th>Numero</th>
+								<th>Tipo</th>
+								<th>Prezzo a notte (€)</th>
+								<th>Data Checkin</th>
+								<th>Data Checkout</th>
+								<th>Azioni</th>
+							</tr>
 
-								<tr th:each>
-									<td th:text="*{numero}"></td>
-									<td th:text="*{prezzo}"></td>
-									<td th:text="*{tipoCamera}"></td>
-
-									<td><a
-											th:href="'/view/?id='+*{numero}">
-										<button>View</button>
-									</a>
-
-
-								</tr>
-
-							</table>
+							<tr th:each="camera : ${camere}" th:object="${camera}">
+								<td th:text="*{numero}"></td>
+								<td th:text="*{tipoCamera.descrizione}"></td>
+								<td th:text="*{prezzo}"></td>
+								<td>
+									<input type="date" name="dataCheckin" pattern="yyyy-MM-dd">
+								</td>
+								<td>
+									<input type="date" name="dataCheckout" pattern="yyyy-MM-dd">
+								</td>
 
 
-						</form>
+								<td>
+									<input type="submit" value="prenota">
+								</td>
+								<input type="number" th:value="*{numero}" name="numero" hidden>
 
 
-					</body>
+							</tr>
+
+						</table>
+
+
+					</form>
 
 
 				</div>

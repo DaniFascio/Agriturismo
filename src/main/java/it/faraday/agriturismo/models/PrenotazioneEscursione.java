@@ -33,32 +33,36 @@ public class PrenotazioneEscursione {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public PrenotazioneEscursione setId(Integer id) {
 		this.id = id;
+		return this;
 	}
 
 	public Date getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public PrenotazioneEscursione setData(Date data) {
 		this.data = data;
+		return this;
 	}
 
 	public Utente getUtente() {
 		return utente;
 	}
 
-	public void setUtente(Utente utente) {
+	public PrenotazioneEscursione setUtente(Utente utente) {
 		this.utente = utente;
+		return this;
 	}
 
 	public Escursione getEscursione() {
 		return escursione;
 	}
 
-	public void setEscursione(Escursione escursione) {
+	public PrenotazioneEscursione setEscursione(Escursione escursione) {
 		this.escursione = escursione;
+		return this;
 	}
 
 	@Override

@@ -34,32 +34,36 @@ public class OrdinazionePiatto {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public OrdinazionePiatto setId(Integer id) {
 		this.id = id;
+		return this;
 	}
 
 	public Date getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public OrdinazionePiatto setData(Date data) {
 		this.data = data;
+		return this;
 	}
 
 	public Utente getUtente() {
 		return utente;
 	}
 
-	public void setUtente(Utente utente) {
+	public OrdinazionePiatto setUtente(Utente utente) {
 		this.utente = utente;
+		return this;
 	}
 
 	public it.faraday.agriturismo.models.Piatto getPiatto() {
 		return Piatto;
 	}
 
-	public void setPiatto(it.faraday.agriturismo.models.Piatto piatto) {
+	public OrdinazionePiatto setPiatto(it.faraday.agriturismo.models.Piatto piatto) {
 		Piatto = piatto;
+		return this;
 	}
 
 	@Override

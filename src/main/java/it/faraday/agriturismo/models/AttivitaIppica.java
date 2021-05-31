@@ -40,32 +40,45 @@ public class AttivitaIppica {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public AttivitaIppica setId(Integer id) {
 		this.id = id;
+		return this;
 	}
 
 	public Date getDataCheckin() {
 		return dataCheckin;
 	}
 
-	public void setDataCheckin(Date dataCheckin) {
+	public AttivitaIppica setDataCheckin(Date dataCheckin) {
 		this.dataCheckin = dataCheckin;
+		return this;
 	}
 
 	public Date getDataCheckout() {
 		return dataCheckout;
 	}
 
-	public void setDataCheckout(Date dataCheckout) {
+	public AttivitaIppica setDataCheckout(Date dataCheckout) {
 		this.dataCheckout = dataCheckout;
+		return this;
 	}
 
 	public float getPrezzo() {
 		return prezzo;
 	}
 
-	public void setPrezzo(float prezzo) {
+	public AttivitaIppica setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
+		return this;
+	}
+
+	public List<Personale> getPersonaleAttivita() {
+		return PersonaleAttivita;
+	}
+
+	public AttivitaIppica setPersonaleAttivita(List<Personale> personaleAttivita) {
+		PersonaleAttivita = personaleAttivita;
+		return this;
 	}
 
 	@Override

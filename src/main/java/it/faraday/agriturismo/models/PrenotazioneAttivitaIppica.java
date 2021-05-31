@@ -33,32 +33,36 @@ public class PrenotazioneAttivitaIppica {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public PrenotazioneAttivitaIppica setId(Integer id) {
 		this.id = id;
+		return this;
 	}
 
 	public Date getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public PrenotazioneAttivitaIppica setData(Date data) {
 		this.data = data;
+		return this;
 	}
 
 	public Utente getUtente() {
 		return utente;
 	}
 
-	public void setUtente(Utente utente) {
+	public PrenotazioneAttivitaIppica setUtente(Utente utente) {
 		this.utente = utente;
+		return this;
 	}
 
 	public AttivitaIppica getAttivitaIppica() {
 		return attivitaIppica;
 	}
 
-	public void setAttivitaIppica(AttivitaIppica attivitaIppica) {
+	public PrenotazioneAttivitaIppica setAttivitaIppica(AttivitaIppica attivitaIppica) {
 		this.attivitaIppica = attivitaIppica;
+		return this;
 	}
 
 	@Override
