@@ -1,7 +1,5 @@
 package it.faraday.agriturismo.models;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +13,7 @@ public class Piatto {
 	private Integer id;
 
 	@Basic
-	private String Descrizione;
+	private String descrizione;
 
 	@Basic
 	private float prezzo;
@@ -33,11 +31,11 @@ public class Piatto {
 	}
 
 	public String getDescrizione() {
-		return Descrizione;
+		return descrizione;
 	}
 
 	public Piatto setDescrizione(String descrizione) {
-		Descrizione = descrizione;
+		this.descrizione = descrizione;
 		return this;
 	}
 
@@ -52,7 +50,7 @@ public class Piatto {
 
 	@Override
 	public String toString() {
-		return "Piatto{" + "id=" + id + ", Descrizione='" + Descrizione + '\'' + ", prezzo=" + prezzo + '}';
+		return "Piatto{" + "id=" + id + ", Descrizione='" + descrizione + '\'' + ", prezzo=" + prezzo + '}';
 	}
 
 }

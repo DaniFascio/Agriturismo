@@ -12,7 +12,24 @@
 	<body>
 		<div class="container-fluid text-center">
 
-			<h1 class="display-5 mx-auto m-4">Area cliente</h1>
+			<div class="row">
+
+				<div class="col-4">
+				</div>
+				<div class="col-4">
+
+					<h1 class="display-5 mx-auto m-4">Area cliente</h1>
+				</div>
+				<div class="col-4 d-flex justify-content-end align-items-center">
+
+					<a class=" btn btn-primary m-1" href="/utente/logout">Logout</a>
+					<a class=" btn btn-primary m-1" href="/utente/logout">Logout</a>
+
+
+				</div>
+
+			</div>
+
 
 			<div th:if="${alert != null}" th:utext="${alert.getRawHtml()}" th:remove="tag"></div>
 
@@ -23,14 +40,15 @@
 						<div>
 
 
-							<a class=" btn btn-primary m-1" href="/utente/ordinazionePizzeria">Ordinazione pizzeria</a>
-							<a class=" btn btn-primary m-1" href="/utente/ordinazioneRistorante">Ordinazione
-								ristorante
+							<a class=" btn btn-primary m-1" href="/utente/ordinazionePizzeria">Ordinazione pizzeria
+							</a>
+							<a class=" btn btn-primary m-1" href="/utente/ordinazioneRistorante">Ordinazione ristorante
 							</a>
 
 						</div>
 
-						<a class=" btn btn-primary m-1" href="/utente/prenotazioneSoggiorno">Prenotazione Soggiorno</a>
+						<a class=" btn btn-primary m-1" href="/utente/prenotazioneSoggiorno">Prenotazione Soggiorno
+						</a>
 						<a class=" btn btn-primary m-1" href="/utente/prenotazioneAttivitaIppica">Prenotazione Attività
 							Ippica
 						</a>
@@ -39,7 +57,6 @@
 
 					</div>
 
-					<a class=" btn btn-primary m-1" href="/utente/logout">Logout</a>
 
 				</div>
 

@@ -6,12 +6,11 @@
 
 ```
 1)
-select distinct camere.numero
-from camere,
-	 prenotazioni_soggiorni
-where camere.numero not in (
-        select prenotazioni_soggiorni.numero 
-        from prenotazioni_soggiorni);
+select count(e.id_escursione) as numero, nome 
+from escursioni e, mete m 
+
+where m.id_meta = e.id_meta 
+group by nome order by numero desc limit 1;
 ```
 
 ```

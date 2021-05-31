@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>Prenotazione Escursione</title>
+		<title>Visualizza Ordinazioni Pizze</title>
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 				integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -12,32 +12,47 @@
 	<body>
 		<div class="container-fluid text-center">
 
-			<h1 class="display-5 mx-auto m-4">Prenota escursione</h1>
+			<div class="row">
+
+				<div class="col-4">
+				</div>
+				<div class="col-4">
+
+
+				</div>
+				<div class="col-3 d-flex justify-content-end align-items-center">
+
+					<a class=" btn btn-primary m-1" href="/utente/">Ordina
+					</a>
+
+
+				</div>
+
+			</div>
 
 			<div class="container border border-primary rounded p-3">
 				<div class="d-flex flex-column g-2 align-items-center">
 
 
-					<h1>Elenco escursioni</h1>
+					<h1>Elenco pizze da ordinare</h1>
 
 
 					<table border="1">
+
 						<tr>
 							<th>Data</th>
-							<th>Meta</th>
-							<th>Prezzo</th>
+							<th>Piatto</th>
 							<th>Azioni</th>
 						</tr>
 
-						<form action="/utente/prenotazioneEscursione/submit" method="POST">
+						<form action="/utente/visualizzaOrdinazioniPizze/delete" method="POST">
 
-							<tr th:each="escursione : ${escursioni}" th:object="${escursione}">
+							<tr th:each="ordinazionePizza : ${ordinazioniPizze}" th:object="${ordinazionePizza}">
 								<td th:text="*{#dates.format(data,'dd-MM-yyyy')}"></td>
-								<td th:text="*{meta.nome}"></td>
-								<td th:text="*{prezzo}"></td>
+								<td th:text="*{pizza.descrizione}"></td>
 
 								<td>
-									<input type="submit" value="prenota">
+									<input type="submit" value="rimuovi">
 								</td>
 								<input type="number" th:value="*{id}" name="id" hidden>
 
@@ -54,4 +69,4 @@
 		</div>
 
 	</body>
-</html>
+</html>>

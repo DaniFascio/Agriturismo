@@ -12,7 +12,24 @@
 	<body>
 		<div class="container-fluid text-center">
 
-			<h1 class="display-5 mx-auto m-4">Ordina piatti tipici locali</h1>
+			<div class="row">
+
+				<div class="col-4">
+				</div>
+				<div class="col-4">
+
+					<h1 class="display-5 mx-auto m-4">Menu Ristorante piatti tipici locali</h1>
+
+				</div>
+				<div class="col-3 d-flex justify-content-end align-items-center">
+
+					<a class=" btn btn-primary m-1" href="/utente/visualizzaOrdinazioniPiatti">Acquisto
+					</a>
+
+
+				</div>
+
+			</div>
 
 			<div class="container border border-primary rounded p-3">
 				<div class="d-flex flex-column g-2 align-items-center">
@@ -20,28 +37,26 @@
 
 					<body>
 
-						<h1>Elenco attività ippiche</h1>
+						<h2>ordina piatti</h2>
 
-						<form action="/utente/prenotazioneAttivitaIppica/submit" method="POST">
+						<form action="/utente/ordinazioneRistorante/submit" method="POST">
 
 
-							<table>
+							<table border="1">
 								<tr>
-									<th>Orario inizio</th>
-									<th>Orario fine</th>
+									<th>Nome</th>
 									<th>Prezzo</th>
 									<th>Azioni</th>
 								</tr>
 
-								<tr th:each="attivita : ${attivitaIppica}" th:object="${attivita}">
-									<td th:text="*{dataCheckin}"></td>
-									<td th:text="*{dataCheckout}"></td>
+								<tr th:each="piatto: ${piatti}" th:object="${piatto}">
+									<td th:text="*{descrizione}"></td>
 									<td th:text="*{prezzo}"></td>
 
-									<td><a
-											th:href="'/view/?id='+*{id}">
-										<button>Prenota</button>
-									</a>
+									<td>
+										<input type="submit" value="ordina">
+									</td>
+									<input type="number" th:value="*{id}" name="id" hidden>
 
 
 								</tr>

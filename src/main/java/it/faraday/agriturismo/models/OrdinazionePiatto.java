@@ -12,7 +12,7 @@ public class OrdinazionePiatto {
 	@Column(name = "id_ordinazionepiat")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORDPIAT_SEQ_GEN")
 	@SequenceGenerator(name = "ORDPIAT_SEQ_GEN",
-			sequenceName = "ordinapiatti_id_ordinazionepiatti_seq",
+			sequenceName = "ordinapiatti_id_ordinazionepiat_seq",
 			allocationSize = 1)
 	private Integer id;
 

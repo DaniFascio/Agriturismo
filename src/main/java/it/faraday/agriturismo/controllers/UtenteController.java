@@ -12,9 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
@@ -291,7 +289,7 @@ public class UtenteController {
 				.get();
 
 		model.addAttribute("utente", utente);
-		model.addAttribute("camera", camerarepo.findAll());
+		model.addAttribute("piatti", piattorepo.findAll());
 
 		return "utente/ordinazioneRistorante";
 	}
@@ -308,14 +306,14 @@ public class UtenteController {
 		Piatto piattoDb = piattorepo.findById(piatto.getId())
 				.get();
 
-		Date data;
-/*
+		Date data = new Date();
+
 		OrdinazionePiatto ordinazionePiatto = new OrdinazionePiatto().setUtente(utente)
 				.setPiatto(piatto)
 				.setData(data);
 
 		ordinazionepiattorepo.save(ordinazionePiatto);
-*/
+
 		return "redirect:/utente/areaCliente?message=" + encode("Ordinazione effettuata") + "&type=success";
 	}
 
@@ -330,7 +328,7 @@ public class UtenteController {
 				.get();
 
 		model.addAttribute("utente", utente);
-		model.addAttribute("camera", camerarepo.findAll());
+		model.addAttribute("pizze", pizzarepo.findAll());
 
 		return "utente/ordinazionePizzeria";
 	}
@@ -347,18 +345,18 @@ public class UtenteController {
 		Pizza pizzaDb = pizzarepo.findById(pizza.getId())
 				.get();
 
-		Date data;
-/*
+		Date data = new Date();
+
 		OrdinazionePizza ordinazionePizza = new OrdinazionePizza().setUtente(utente)
 				.setPizza(pizza)
 				.setData(data);
 
 		ordinazionepizzarepo.save(ordinazionePizza);
-*/
+
 		return "redirect:/utente/areaCliente?message=" + encode("Ordinazione effettuata") + "&type=success";
 	}
 
-	@GetMapping("/visualizzaPrenotazioniPiatti")
+	@GetMapping("/visualizzaOrdinazioniPiatti")
 	private String viewPrenotazioniPiatti(Model model,
 			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
@@ -369,12 +367,28 @@ public class UtenteController {
 				.get();
 
 		model.addAttribute("utente", utente);
-		model.addAttribute("piatto", piattorepo.findAll());
+		model.addAttribute("ordinazioniPiatti", ordinazionepiattorepo.ordinazioniPiatti(utente));
 
-		return "utente/visualizzaPrenotazioniPiatti";
+		return "utente/visualizzaOrdinazioniPiatti";
 	}
 
-	@GetMapping("/visualizzaPrenotazioniPizze")
+	@GetMapping("/visualizzaOrdinazioniPiatti/delete")
+	private String viewPrenotazioniPiatti_delete(OrdinazionePiatto ordinazionePiatto,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		ordinazionepiattorepo.deleteById(ordinazionePiatto.getId());
+
+
+		return "redirect:/utente/visualizzaOrdinazioniPiatti?message=" + encode("Eliminazione effettuata") + "&type=success";
+	}
+
+	@GetMapping("/visualizzaOrdinazioniPizze")
 	private String viewPrenotazioniPizze(Model model,
 			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
@@ -385,10 +399,28 @@ public class UtenteController {
 				.get();
 
 		model.addAttribute("utente", utente);
-		model.addAttribute("pizza", pizzarepo.findAll());
+		model.addAttribute("ordinazioniPizze", ordinazionepizzarepo.ordinazioniPizze(utente));
 
-		return "utente/visualizzaPrenotazioniPiatti";
+		return "utente/visualizzaOrdinazioniPizze";
 	}
+
+	@GetMapping("/visualizzaOrdinazioniPizze/delete")
+	private String viewPrenotazioniPizze_delete(OrdinazionePizza ordinazionePizza,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		ordinazionepizzarepo.deleteById(ordinazionePizza.getId());
+
+
+		return "redirect:/utente/visualizzaOrdinazioniPizze?message=" + encode("Eliminazione effettuata") + "&type=success";
+	}
+
+
 
 	@GetMapping("/logout")
 	private String logout(HttpServletResponse response, Model model,

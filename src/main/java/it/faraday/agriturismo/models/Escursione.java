@@ -38,29 +38,51 @@ public class Escursione {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public Escursione setId(Integer id) {
 		this.id = id;
+		return this;
 	}
 
 	public float getPrezzo() {
 		return prezzo;
 	}
 
-	public void setPrezzo(float prezzo) {
+	public Escursione setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
+		return this;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public Escursione setData(Date data) {
+		this.data = data;
+		return this;
+	}
+
+	public List<Personale> getPersonaleEscursioni() {
+		return PersonaleEscursioni;
+	}
+
+	public Escursione setPersonaleEscursioni(List<Personale> personaleEscursioni) {
+		PersonaleEscursioni = personaleEscursioni;
+		return this;
 	}
 
 	public Meta getMeta() {
 		return meta;
 	}
 
-	public void setMeta(Meta meta) {
+	public Escursione setMeta(Meta meta) {
 		this.meta = meta;
+		return this;
 	}
 
 	@Override
 	public String toString() {
-		return "Escursione{" + "id=" + id + ", prezzo=" + prezzo + ", meta=" + meta + '}';
+		return "Escursione{" + "id=" + id + ", prezzo=" + prezzo + ", data=" + data + ", PersonaleEscursioni=" +
+				PersonaleEscursioni + ", meta=" + meta + '}';
 	}
 
 	@Entity
