@@ -3,8 +3,139 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Visualizza Prenotazioni</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+				integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+				crossorigin="anonymous">
+
 	</head>
 	<body>
+		<div class="container-fluid text-center">
+
+			<div class="row">
+
+				<div class="col-4">
+				</div>
+				<div class="col-4">
+
+
+				</div>
+				<div class="col-3 d-flex justify-content-end align-items-center">
+
+					<a class=" btn btn-primary m-1" href="/utente/ordinazionePizzeria">Indietro</a>
+
+				</div>
+
+			</div>
+
+			<div class="container border border-primary rounded p-3">
+				<div class="d-flex flex-column g-2 align-items-center">
+
+
+					<h1>Elenco Prenotazioni</h1>
+
+
+					<table border="1">
+
+						<p>Prenotazioni soggiorni</p>
+						<tr>
+							<th>id</th>
+							<th>Data Checkin</th>
+							<th>Data Checkout</th>
+							<th>Numero</th>
+							<th>Tipo</th>
+							<th>Azioni</th>
+						</tr>
+
+
+							<tr th:each="prenotazioneSoggiorno : ${prenotazioniSoggiorni}" th:object="${prenotazioneSoggiorno}">
+
+								<form action="/utente/visualizzaPrenotazioniSoggiorno/delete" method="POST">
+
+
+								<td th:text="*{id}"></td>
+								<td th:text="*{#dates.format(dataCheckin,'dd-MM-yyyy HH-mm')}"></td>
+								<td th:text="*{#dates.format(dataCheckout,'dd-MM-yyyy HH-mm')}"></td>
+								<td th:text="*{camera.numero}"></td>
+								<td th:text="*{camera.tipoCamera}"></td>
+
+								<td>
+									<input type="submit" value="rimuovi">
+								</td>
+								<input type="number" th:value="*{id}" name="id" hidden>
+
+								</form>
+
+							</tr>
+
+
+					</table>
+
+					<table border="1">
+
+						<p>Prenotazioni attivita ippiche</p>
+						<tr>
+							<th>id</th>
+							<th>Data e orario inizio</th>
+							<th>Data e orario fine</th>
+							<th>Azioni</th>
+						</tr>
+
+
+							<tr th:each="prenotazioneAttivita : ${prenotazioniAttivita}" th:object="${prenotazioneAttivita}">
+
+								<form action="/utente/visualizzaPrenotazioniAttivita/delete" method="POST">
+
+								<td th:text="*{id}"></td>
+								<td th:text="*{#dates.format(attivitaIppica.dataCheckin,'dd-MM-yyyy HH-mm')}"></td>
+								<td th:text="*{#dates.format(attivitaIppica.dataCheckout,'dd-MM-yyyy HH-mm')}"></td>
+
+								<td>
+									<input type="submit" value="rimuovi">
+								</td>
+								<input type="number" th:value="*{id}" name="id" hidden>
+
+								</form>
+
+							</tr>
+
+					</table>
+
+					<table border="1">
+
+						<p>Prenotazioni escursioni</p>
+						<tr>
+							<th>id</th>
+							<th>Data</th>
+							<th>Meta</th>
+							<th>Azioni</th>
+						</tr>
+
+
+							<tr th:each="prenotazioneEscursione : ${prenotazioniEscursione}" th:object="${prenotazioneEscursione}">
+
+								<form action="/utente/visualizzaPrenotazioniEscursione/delete" method="POST">
+
+								<td th:text="*{id}"></td>
+								<td th:text="*{#dates.format(escursione.data,'dd-MM-yyyy')}"></td>
+								<td th:text="*{escursione.meta}"></td>
+
+								<td>
+									<input type="submit" value="rimuovi">
+								</td>
+								<input type="number" th:value="*{id}" name="id" hidden>
+
+								</form>
+
+							</tr>
+
+					</table>
+
+
+				</div>
+			</div>
+
+		</div>
 
 	</body>
 </html>

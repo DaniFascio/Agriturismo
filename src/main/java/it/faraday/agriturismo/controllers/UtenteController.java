@@ -357,7 +357,7 @@ public class UtenteController {
 	}
 
 	@GetMapping("/visualizzaOrdinazioniPiatti")
-	private String viewPrenotazioniPiatti(Model model,
+	private String viewOrdinazioniPiatti(Model model,
 			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
 		if(usernameUtente == null)
@@ -372,8 +372,8 @@ public class UtenteController {
 		return "utente/visualizzaOrdinazioniPiatti";
 	}
 
-	@GetMapping("/visualizzaOrdinazioniPiatti/delete")
-	private String viewPrenotazioniPiatti_delete(OrdinazionePiatto ordinazionePiatto,
+	@PostMapping("/visualizzaOrdinazioniPiatti/delete")
+	private String viewOrdinazioniPiatti_delete(OrdinazionePiatto ordinazionePiatto,
 			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
 		if(usernameUtente == null)
@@ -388,8 +388,23 @@ public class UtenteController {
 		return "redirect:/utente/visualizzaOrdinazioniPiatti?message=" + encode("Eliminazione effettuata") + "&type=success";
 	}
 
+	@PostMapping("/visualizzaOrdinazioniPiatti/submit")
+	private String viewOrdinazioniPiatti_submit(@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		ordinazionepiattorepo.deleteAllByUtente(utente);
+
+
+		return "redirect:/utente/areaCliente?message=" + encode("Acquisto effettuato") + "&type=success";
+	}
+
 	@GetMapping("/visualizzaOrdinazioniPizze")
-	private String viewPrenotazioniPizze(Model model,
+	private String viewOrdinazioniPizze(Model model,
 			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
 		if(usernameUtente == null)
@@ -404,8 +419,8 @@ public class UtenteController {
 		return "utente/visualizzaOrdinazioniPizze";
 	}
 
-	@GetMapping("/visualizzaOrdinazioniPizze/delete")
-	private String viewPrenotazioniPizze_delete(OrdinazionePizza ordinazionePizza,
+	@PostMapping("/visualizzaOrdinazioniPizze/delete")
+	private String viewOrdinazioniPizze_delete(OrdinazionePizza ordinazionePizza,
 			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
 		if(usernameUtente == null)
@@ -420,7 +435,83 @@ public class UtenteController {
 		return "redirect:/utente/visualizzaOrdinazioniPizze?message=" + encode("Eliminazione effettuata") + "&type=success";
 	}
 
+	@PostMapping("/visualizzaOrdinazioniPizze/submit")
+	private String viewOrdinazioniPizze_submit(@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
 
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		ordinazionepizzarepo.deleteAllByUtente(utente);
+
+		return "redirect:/utente/areaCliente?message=" + encode("Acquisto effettuato") + "&type=success";
+	}
+
+	@GetMapping("/visualizzaPrenotazioni")
+	private String viewPrenotazioni(Model model,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		model.addAttribute("utente", utente);
+		model.addAttribute("prenotazioniAttivita", prenoattivitarepo.findAll());
+		model.addAttribute("prenotazioniEscursione", prenoescursionerepo.findAll());
+		model.addAttribute("prenotazioniSoggiorni", prenosoggiornorepo.findAll());
+
+		return "utente/visualizzaPrenotazioni";
+	}
+
+	@PostMapping("/visualizzaPrenotazioniAttivita/delete")
+	private String viewPrenotazioniAttivita_delete(PrenotazioneAttivitaIppica prenotazioneAttivitaIppica,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+
+		prenoattivitarepo.deleteById(prenotazioneAttivitaIppica.getId());
+
+		return "redirect:/utente/visualizzaPrenotazioni?message=" + encode("Eliminazione effettuata") + "&type=success";
+	}
+	@PostMapping("/visualizzaPrenotazioniSoggiorno/delete")
+	private String viewPrenotazioniSoggiorno_delete(PrenotazioneSoggiorno prenotazioneSoggiorno,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		prenosoggiornorepo.deleteById(prenotazioneSoggiorno.getId());
+
+
+		return "redirect:/utente/visualizzaPrenotazioni?message=" + encode("Eliminazione effettuata") + "&type=success";
+	}
+	@PostMapping("/visualizzaPrenotazioniEscursione/delete")
+	private String viewPrenotazioniEscursione_delete(PrenotazioneEscursione prenotazioneEscursione,
+			@CookieValue(value = COOKIE_UTENTE, required = false) String usernameUtente) {
+
+		if(usernameUtente == null)
+			return "redirect:/utente/accedi";
+
+		Utente utente = utenterepo.findByUsername(usernameUtente)
+				.get();
+
+		prenoescursionerepo.deleteById(prenotazioneEscursione.getId());
+
+
+		return "redirect:/utente/visualizzaPrenotazioni?message=" + encode("Eliminazione effettuata") + "&type=success";
+	}
 
 	@GetMapping("/logout")
 	private String logout(HttpServletResponse response, Model model,
