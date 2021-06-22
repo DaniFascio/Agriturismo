@@ -57,7 +57,7 @@
 								<td th:text="*{#dates.format(dataCheckin,'dd-MM-yyyy HH-mm')}"></td>
 								<td th:text="*{#dates.format(dataCheckout,'dd-MM-yyyy HH-mm')}"></td>
 								<td th:text="*{camera.numero}"></td>
-								<td th:text="*{camera.tipoCamera}"></td>
+								<td th:text="*{camera.tipoCamera.descrizione}"></td>
 
 								<td>
 									<input type="submit" value="rimuovi">
@@ -118,7 +118,7 @@
 
 								<td th:text="*{id}"></td>
 								<td th:text="*{#dates.format(escursione.data,'dd-MM-yyyy')}"></td>
-								<td th:text="*{escursione.meta}"></td>
+								<td th:text="*{escursione.meta.nome}"></td>
 
 								<td>
 									<input type="submit" value="rimuovi">
