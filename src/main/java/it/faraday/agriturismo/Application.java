@@ -31,12 +31,6 @@ public class Application {
 		logger = LoggerFactory.getLogger(Application.class);
 	}
 
-	@Autowired
-	private OrdinazionePiattoRepository ordinazionepiattorepo;
-
-	@Autowired
-	private OrdinazionePizzaRepository ordinazionepizzarepo;
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -49,13 +43,6 @@ public class Application {
 			logger.error(e.getMessage(), e);
 		}
 		return s;
-	}
-
-	@PostConstruct
-	private void postConstruct() {
-
-		System.out.println("SI COMINCIA!");
-
 	}
 
 }

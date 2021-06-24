@@ -97,7 +97,7 @@ public class UtenteController {
 				cookie.setPath("/utente");
 				response.addCookie(cookie);
 
-				model.addAttribute("title", "Login Area Clienti");
+				model.addAttribute("title", "Login area clienti");
 				model.addAttribute("message", "Login effettuato");
 				model.addAttribute("nextUrl", "/utente/areaCliente");
 				return "success";
@@ -460,9 +460,9 @@ public class UtenteController {
 				.get();
 
 		model.addAttribute("utente", utente);
-		model.addAttribute("prenotazioniAttivita", prenoattivitarepo.findAll());
-		model.addAttribute("prenotazioniEscursione", prenoescursionerepo.findAll());
-		model.addAttribute("prenotazioniSoggiorni", prenosoggiornorepo.findAll());
+		model.addAttribute("prenotazioniAttivita", prenoattivitarepo.prenotazioneAttivitaIppica(utente));
+		model.addAttribute("prenotazioniEscursione", prenoescursionerepo.prenotazioneEscursione(utente));
+		model.addAttribute("prenotazioniSoggiorni", prenosoggiornorepo.prenotazioneSoggiorno(utente));
 
 		return "utente/visualizzaPrenotazioni";
 	}
@@ -521,7 +521,7 @@ public class UtenteController {
 		cookie.setMaxAge(1);
 		response.addCookie(cookie);
 
-		model.addAttribute("title", "Logout pazienti");
+		model.addAttribute("title", "Logout area clienti");
 		model.addAttribute("message", "Logout effettuato correttamente");
 		model.addAttribute("nextUrl", "/");
 
