@@ -64,6 +64,23 @@ d) Elenco delle camere libere
 
 
 
+
+
+PIANTINE EDIFICIO:
+
+
+![schema_fisico-edificio 1](https://user-images.githubusercontent.com/65457329/126990065-7442bf00-4994-4010-8704-6b7fcc3b1a6f.png)
+
+
+
+![schema_fisico-edificio 2](https://user-images.githubusercontent.com/65457329/126990122-162b3ccb-96ef-4d98-adfa-693c2604e490.png)
+
+
+
+![schema_fisico-edificio 3](https://user-images.githubusercontent.com/65457329/126990221-47f7d2a4-b75a-4a62-a57c-057572c66641.png)
+
+
+
 SVILUPPO:
 
 
