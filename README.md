@@ -43,6 +43,26 @@ La gestione dell’offerta della pizzeria e del ristorante è affidata a un resp
 Il candidato analizzi la realtà di riferimento, fornendo anche uno schema che evidenzi le principali funzionalità del sistema, formuli le necessarie ipotesi iniziali e aggiuntive.
   
 
+PIANTINE EDIFICI:
+
+
+EDIFICIO PERNOTTAMENTO
+
+![schema_fisico-edificio 1](https://user-images.githubusercontent.com/65457329/126991452-bc0d6676-15a1-4e8c-ba5f-3bed25497472.jpg)
+
+
+
+EDIFICIO RISTORAZIONE
+
+![schema_fisico-edificio 2](https://user-images.githubusercontent.com/65457329/126992031-6f3cb317-d290-4570-8030-fdba8440f3bf.jpg)
+
+
+
+EDIFICIO ATTIVITA' IPPICHE ED ESCURSIONI
+
+![schema_fisico-edificio 3](https://user-images.githubusercontent.com/65457329/126992045-023d7550-c8cd-4c9c-b3bc-37a26ed5956b.jpg)
+
+
 
 
 Individui una soluzione che a suo motivato giudizio sia la più idonea a sviluppare i seguenti punti:
@@ -81,30 +101,6 @@ Individui una soluzione che a suo motivato giudizio sia la più idonea a svilupp
 
 
 
-
-
-
-PIANTINE EDIFICI:
-
-
-EDIFICIO PERNOTTAMENTO
-
-![schema_fisico-edificio 1](https://user-images.githubusercontent.com/65457329/126991452-bc0d6676-15a1-4e8c-ba5f-3bed25497472.jpg)
-
-
-
-EDIFICIO RISTORAZIONE
-
-![schema_fisico-edificio 2](https://user-images.githubusercontent.com/65457329/126992031-6f3cb317-d290-4570-8030-fdba8440f3bf.jpg)
-
-
-
-EDIFICIO ATTIVITA' IPPICHE ED ESCURSIONI
-
-![schema_fisico-edificio 3](https://user-images.githubusercontent.com/65457329/126992045-023d7550-c8cd-4c9c-b3bc-37a26ed5956b.jpg)
-
-
-
 SVILUPPO:
 
 
@@ -117,4 +113,15 @@ Le tecnologie utilizzate per la realizzazione dell'applicazione web sono:
 - Front-end:
     - Thymeleaf
     - Bootstrap
+
+
+DIAGRAMMA E/R
+
+![Diagramma_ER](https://user-images.githubusercontent.com/65457329/126992792-9a074e62-36cc-4eca-bc4c-9d614449ee2c.jpg)
+
+
+ORGANIZZAZIONE DEL PORTALE
+
+![OraganizzazionePortale](https://user-images.githubusercontent.com/65457329/126992930-5f078cdd-48a9-489c-80f6-d081071657e4.jpg)
+
 
