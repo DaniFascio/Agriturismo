@@ -42,25 +42,39 @@ Delle prenotazioni interessano:
 La gestione dell’offerta della pizzeria e del ristorante è affidata a un responsabile che periodicamente aggiorna l’elenco dei piatti tipici locali disponibili. I clienti possono effettuare le loro ordinazioni accedendo all’area dedicata del portale.
 Il candidato analizzi la realtà di riferimento, fornendo anche uno schema che evidenzi le principali funzionalità del sistema, formuli le necessarie ipotesi iniziali e aggiuntive.
   
+
+
+
 Individui una soluzione che a suo motivato giudizio sia la più idonea a sviluppare i seguenti punti:
 
 1. fornisca una possibile soluzione per il progetto della WAN che consenta la comunicazione fra tutte le sedi dislocate nei diversi punti del territorio nazionale, motivando le scelte fatte;
+
 2. fornisca una possibile soluzione per il progetto delle reti LAN facendo riferimento agli standard utilizzati, alla topologia di rete, disegnando lo schema fisico e lo schema logico della rete, spiegando le scelte fatte in relazione al posizionamento dei centri stella e dei locali, al cablaggio verticale e orizzontale. Disegni in dettaglio l’architettura dei centri stella e descriva gli elementi hardware utilizzati. Definisca il piano di indirizzamento delle reti;
+
 3. fornisca una soluzione per la segmentazione fisica delle reti definendo il piano di indirizzamento per le sottoreti create;
+
 4. definisca i servizi offerti dai server ai client della LAN e i servizi offerti dai server per fornire all’agriturismo visibilità all’esterno; fornisca una soluzione per la presenza di server ipotizzando la loro collocazione interna alla struttura e la loro protezione; si individui anche una soluzione per la sicurezza della LAN;
+
 5. proponga le diverse soluzioni alternative alla collocazione dei server all’interno della struttura, esponendone vantaggi e svantaggi;
+
 6. fornisca una soluzione per la segmentazione logica delle reti definendo il piano di indirizzamento per le sottoreti create;
+
 7. la comunicazione in rete comporta l’esposizione delle trasmissioni dei dati a numerosi rischi di violazione. Il candidato proponga una tecnica per garantire la segretezza dei dati che viaggiano in linea;
+
 8. progetti il diagramma E/R relative alla base di dati necessaria all’archiviazione e gestione dei dati;
+
 9. derivi lo schema logico della base di dati;
+
 10. definisca in linguaggio SQL l’intera base di dati;
+
 11. scriva le seguenti interrogazioni espresse in linguaggio SQL:
-a) Meta dell’escursione più richiesta
-b) Elenco delle fasce orarie per attività ippiche che non sono state mai prenotate nel mese di maggio dell’anno in corso
-c) Elenco dei piatti tipici locali che sono stati ordinati più di 100 volte
-d) Elenco delle camere libere
-12. descriva l’organizzazione del portale;
-13. codifichi in qualsiasi linguaggio una parte del portale che si ritiene significativa.
+
+    a) Meta dell’escursione più richiesta
+    b) Elenco delle fasce orarie per attività ippiche che non sono state mai prenotate nel mese di maggio dell’anno in corso
+    c) Elenco dei piatti tipici locali che sono stati ordinati più di 100 volte
+    d) Elenco delle camere libere
+    12. descriva l’organizzazione del portale;
+    13. codifichi in qualsiasi linguaggio una parte del portale che si ritiene significativa.
 
 
 
