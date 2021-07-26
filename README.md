@@ -80,24 +80,26 @@ Individui una soluzione che a suo motivato giudizio sia la più idonea a svilupp
 
 
 
-PIANTINE EDIFICIO:
 
 
-![schema_fisico-edificio 1](https://user-images.githubusercontent.com/65457329/126990065-7442bf00-4994-4010-8704-6b7fcc3b1a6f.png)
+PIANTINE EDIFICI:
 
 
-
-![schema_fisico-edificio 2](https://user-images.githubusercontent.com/65457329/126990122-162b3ccb-96ef-4d98-adfa-693c2604e490.png)
-
-
-
-![schema_fisico-edificio 3](https://user-images.githubusercontent.com/65457329/126990221-47f7d2a4-b75a-4a62-a57c-057572c66641.png)
-
-
+EDIFICIO 
 
 ![schema_fisico-edificio 1](https://user-images.githubusercontent.com/65457329/126991452-bc0d6676-15a1-4e8c-ba5f-3bed25497472.jpg)
 
 
+
+EDIFICIO RISTORAZIONE
+
+![schema_fisico-edificio 2](https://user-images.githubusercontent.com/65457329/126992031-6f3cb317-d290-4570-8030-fdba8440f3bf.jpg)
+
+
+
+EDIFICIO ATTIVITA' IPPICHE ED ESCURSIONI
+
+![schema_fisico-edificio 3](https://user-images.githubusercontent.com/65457329/126992045-023d7550-c8cd-4c9c-b3bc-37a26ed5956b.jpg)
 
 
 
