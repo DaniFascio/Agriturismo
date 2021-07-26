@@ -82,10 +82,12 @@ Individui una soluzione che a suo motivato giudizio sia la più idonea a svilupp
 
 
 
+
+
 PIANTINE EDIFICI:
 
 
-EDIFICIO 
+EDIFICIO PERNOTTAMENTO
 
 ![schema_fisico-edificio 1](https://user-images.githubusercontent.com/65457329/126991452-bc0d6676-15a1-4e8c-ba5f-3bed25497472.jpg)
 
